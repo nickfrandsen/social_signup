@@ -13,12 +13,6 @@ module SocialSignup
 
       class_option :routes, :desc => "Generate routes", :type => :boolean, :default => true
 
-      def add_social_signup_routes
-        social_signup_route  = "social_signup_for :#{plural_name}"
-        social_signup_route << %Q(, :class_name => "#{class_name}") if class_name.include?("::")
-        social_signup_route << %Q(, :skip => :all) unless options.routes?
-        route social_signup_route
-      end
     end
   end
 end
