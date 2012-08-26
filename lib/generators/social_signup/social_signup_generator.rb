@@ -13,6 +13,9 @@ module SocialSignup
 
       class_option :routes, :desc => "Generate routes", :type => :boolean, :default => true
 
+      def add_social_signup_routes
+        route 'mount SocialSignup::Engine => "/social_signup"'
+      end
     end
   end
 end
