@@ -5,7 +5,7 @@ module SocialSignup
         !params[:code].blank?
       end
 
-      def redirect_to_fb_auth(my_url_encoded)
+      def redirect_to_fb_auth
         require 'cgi'
         session[:state] = (0...8).map{65.+(rand(25)).chr}.join
         dialog_url = "http://www.facebook.com/dialog/oauth?client_id=" +
@@ -17,7 +17,7 @@ module SocialSignup
         redirect_to dialog_url
       end
 
-      def create_user_incl_oauth_token(my_url_encoded)
+      def create_user_incl_oauth_token
         if(session[:state].present? && (session[:state] == params[:state]))
           require 'open-uri'      
           token_url = "https://graph.facebook.com/oauth/access_token?" +
@@ -49,6 +49,13 @@ module SocialSignup
         elsif
           raise Exception.new "The state does not match. You may be a victim of CSRF."
         end
+      end
+
+      private
+      
+      def my_url_encoded
+        my_url = "http://localhost:3000/social_signup/facebook_users/signup" #TODO: Hardcoded
+        CGI.escape(my_url)
       end
 
   end
