@@ -16,6 +16,10 @@ module SocialSignup
       def add_social_signup_routes
         route 'mount SocialSignup::Engine => "/social_signup"'
       end
+      
+      def copy_initializer
+        template "social_signup.rb", "config/initializers/social_signup.rb"
+      end
     end
   end
 end

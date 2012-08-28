@@ -3,5 +3,6 @@ module SocialSignup
     isolate_namespace SocialSignup
     require 'rubygems'
     require 'bcrypt'
+    require 'social_signup/facebook'
   end
 end
