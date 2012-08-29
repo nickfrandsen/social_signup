@@ -17,6 +17,7 @@ module SocialSignup
         redirect_to dialog_url
       end
 
+      #TODO: This method is doing three things.. refactor
       def create_user_incl_oauth_token
         if(session[:state].present? && (session[:state] == params[:state]))
           require 'open-uri'      

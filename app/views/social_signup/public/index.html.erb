@@ -17,3 +17,4 @@
 
 <% if current_user %><%= link_to "Edit User", edit_user_path(current_user) %><% end %>
 <%= link_to "View Users", users_path %>
+<%= link_to "Hi", {:controller=>"social_signup/users", :action=>"new"} %>
