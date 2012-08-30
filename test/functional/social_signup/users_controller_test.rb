@@ -9,6 +9,7 @@ module SocialSignup
                                            
     test "should exist" do  
       get :new
+      assert_response :success
     end
     # 
     # describe "failure" do
